@@ -17,6 +17,7 @@
   </head>
 
   <body>
+    <%= react_component('navbar', {login: session[:id] != nil}) %>
     <%= yield %>
   </body>
 </html>

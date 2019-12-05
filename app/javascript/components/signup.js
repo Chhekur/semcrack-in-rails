@@ -68,6 +68,7 @@ class Singup extends React.Component{
                         <span id = "error" className = "error">{this.state.error}</span><br />
                         <button className = "btn btn-primary" onClick = {this.signup.bind(this)}>Sing up</button>
                     </form>
+                    <p>Alredy have an account ? <a href = '/login'>login</a></p>
                 </div>
             </section>
         );

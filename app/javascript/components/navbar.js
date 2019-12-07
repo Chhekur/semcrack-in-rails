@@ -29,6 +29,7 @@ var NavButtonContainer = function(props){
         return (
             <div className="navbar-nav">
                 <NavButton link = '/home'>Home</NavButton>
+                <NavButton link = '/upload-paper'>Upload Paper</NavButton>
                 <NavButton link = '/logout'>Logout</NavButton>
             </div>
         );

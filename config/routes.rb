@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   get '/login' => 'views#login'
   post '/user-login' => 'user#login'
   get '/logout' => 'views#logout'
+  get '/upload-paper' => 'views#upload_paper'
+  post '/upload-paper' => 'paper#upload'
+  get '/show-all-papers' => 'paper#showAll'
 
   root 'views#home'
 end

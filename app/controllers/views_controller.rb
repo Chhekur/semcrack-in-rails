@@ -20,4 +20,10 @@ class ViewsController < ApplicationController
         end
         redirect_to '/'
     end
+
+    def upload_paper
+        if session[:id] == nil
+            redirect_to '/login'
+        end
+    end
 end

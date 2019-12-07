@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/upload-paper' => 'views#upload_paper'
   post '/upload-paper' => 'paper#upload'
   get '/show-all-papers' => 'paper#showAll'
+  get '/search' => 'paper#search'
 
   root 'views#home'
 end

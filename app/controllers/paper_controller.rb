@@ -16,4 +16,10 @@ class PaperController < ApplicationController
         @paper = Paper.find_by(:id => 6)
         render "views/show_all_papers"
     end
+
+    def search
+        @paper = Paper.where("name LIKE '%#{params[:query]}%'")
+        # render json: @paper
+        render "paper/search"
+    end
 end

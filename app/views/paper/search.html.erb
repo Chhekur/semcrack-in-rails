@@ -1,3 +1,6 @@
+<% if @paper.empty? %>
+<p>No record found</p>
+<% end %>
 <% @paper.each do |p| %>
 <%= p.name %><br />
 <% end %>

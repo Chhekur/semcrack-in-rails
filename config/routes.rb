@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   post '/upload-paper' => 'paper#upload'
   get '/show-all-papers' => 'paper#showAll'
   get '/search' => 'paper#search'
+  get '/preview/:id' => 'paper#preview'
 
   root 'views#home'
 end

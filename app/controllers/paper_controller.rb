@@ -13,13 +13,21 @@ class PaperController < ApplicationController
     end
 
     def showAll
-        @paper = Paper.find_by(:id => 6)
-        render "views/show_all_papers"
+        @paper = Paper.find_by(:id => 4)
+        render json: @paper
+        # render "views/show_all_papers"
     end
 
     def search
         @paper = Paper.where("name LIKE '%#{params[:query]}%'")
         # render json: @paper
         render "paper/search"
+    end
+
+    def preview
+        @paper = Paper.find_by(:id => params[:id])
+        @related = Paper.where("name LIKE '%#{@paper.name.split(' ')[0]}%'")
+        @user = User.find_by(:id => @paper.user_id)
+        render "paper/preview"
     end
 end

@@ -1,6 +1,9 @@
 <% if @paper.empty? %>
 <p>No record found</p>
 <% end %>
+<div class = "container">
 <% @paper.each do |p| %>
-<%= p.name %><br />
+<% user = User.find_by(:id => p.user_id) %>
+<%= react_component('search_result', {id: p.id, name: p.name, description: p.description, user: user.name, year: p.year}) %><br />
 <% end %>
+</div>

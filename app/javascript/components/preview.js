@@ -1,5 +1,6 @@
 import React from 'react';
 import SearchResult from './search_result';
+import CommentBox from './comment_box';
 
 class Preview extends React.Component{
     constructor(props){
@@ -11,9 +12,7 @@ class Preview extends React.Component{
             <section>
                 <div className = "container">
                     <div className = "row">
-                        <div className = "col-8">
-                            <LeftCard name = {this.props.name} user = {this.props.user} year = {this.props.year} description = {this.props.description} ></LeftCard>
-                        </div>
+                        <GenrateLeftSide {...this.props} ></GenrateLeftSide>
                         <div className = "col-4">
                             {this.props.related.map(function(data, index){
                                 return <SearchResult name = {data.name} year = {data.year} description = {data.description} user = {data.user} id = {data.id}></SearchResult>
@@ -24,6 +23,25 @@ class Preview extends React.Component{
             </section>
         );
     }
+}
+
+let GenrateLeftSide = function(props){
+    if(props.login){
+        return (
+            <div className = "col-8">
+                <LeftCard name = {props.name} user = {props.user} year = {props.year} description = {props.description} ></LeftCard>
+                <br />
+                <CommentBox></CommentBox>
+            </div>
+        );
+    }else{
+        return(
+            <div className = "col-8">
+                <LeftCard name = {props.name} user = {props.user} year = {props.year} description = {props.description} ></LeftCard>
+            </div>
+        );
+    }
+
 }
 
 let LeftCard = function(props){

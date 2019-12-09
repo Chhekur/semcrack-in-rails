@@ -1,1 +1,1 @@
-<%= react_component('preview', {name: @paper.name, year: @paper.year, description: @paper.description, id: @paper.id, user: @user.name , related: @related}) %>
+<%= react_component('preview', {name: @paper.name, year: @paper.year, description: @paper.description, id: @paper.id, user: @user.name , related: @related, login: session[:id] != nil}) %>

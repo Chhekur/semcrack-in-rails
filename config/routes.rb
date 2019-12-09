@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get '/show-all-papers' => 'paper#showAll'
   get '/search' => 'paper#search'
   get '/preview/:id' => 'paper#preview'
+  get '/new-comment' => 'comments#add'
 
   root 'views#home'
 end

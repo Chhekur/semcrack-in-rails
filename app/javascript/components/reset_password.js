@@ -1,38 +1,35 @@
 import React from 'react';
 
-class Login extends React.Component{
+class ResetPassword extends React.Component{
     constructor(props){
         super(props);
-        console.log(this.props.csrf);
+
         this.state = {
             error : ""
         }
     }
 
-    login(e){
+    change(e){
         e.preventDefault();
-        let email = $('#email').val();
-        let password = $('#password').val();
-        console.log(email, password);
         $.ajax({
-            headers:{
+            headers: {
                 'X-CSRF-Token': this.props.csrf
             },
-            url: '/user-login',
-            type: 'post',
-            data: {
-                email: email, password: password
+            url: '/reset-password',
+            type : 'post',
+            data : {
+                password : $('#password').val()
             },
             success: function(res){
-                // res = JSON.parse(res);
-                if(res.error == false){
-                    location.href = '/';
-                }else{
+                if(res.error){
                     this.setState({
                         error : res.msg
                     });
-                    console.log(res.msg);
-                    
+                }else{
+                    this.setState({
+                        error: 'password has been changed'
+                    });
+                    location.href = '/login'
                 }
             }.bind(this),
             error: function(error){
@@ -45,15 +42,12 @@ class Login extends React.Component{
         return(
             <section>
                 <div className = "container">
-                    <h3>Login</h3>
+                    <h3>Reset Password</h3>
                     <form>
-                        <TextField id = "email" label = "Email" type = "email" required></TextField>
-                        <TextField id = "password" label = "password" type = "password" required></TextField>
+                        <TextField id = "password" label = "New Password" type = "password" required></TextField>
                         <span id = "error" className = "error">{this.state.error}</span><br />
-                        <button className = "btn btn-primary" onClick = {this.login.bind(this)}>Login</button>
+                        <button className = "btn btn-primary" onClick = {this.change.bind(this)}>Change</button>
                     </form>
-                    <p>Don't have an account ? <a href = '/signup'>signup</a></p>
-                    <a href = "/forgot-password">forgot password</a>
                 </div>
             </section>
         );
@@ -69,4 +63,4 @@ var TextField = function(props){
     );
 }
 
-export default Login;
+export default ResetPassword;

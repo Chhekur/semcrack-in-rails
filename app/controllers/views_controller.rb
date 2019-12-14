@@ -26,4 +26,16 @@ class ViewsController < ApplicationController
             redirect_to '/login'
         end
     end
+
+    def forgot_password
+        if session[:id] != nil
+            redirect_to '/home'
+        end
+    end
+
+    def reset_password
+        if session[:id] != nil
+            redirect_to '/home'
+        end
+    end
 end

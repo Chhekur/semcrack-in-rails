@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   get '/search' => 'paper#search'
   get '/preview/:id' => 'paper#preview'
   get '/new-comment' => 'comments#add'
+  get '/forgot-password' => 'views#forgot_password'
+  post '/forgot-password' => 'user#forgot_password'
+  get '/reset-password' => 'views#reset_password'
+  post '/reset-password' => 'user#reset_password'
 
   root 'views#home'
 end
